@@ -1,0 +1,3 @@
+####to verify the master and workernode
+  kubectl get nodes
+  kubectl get nodes -o wide
