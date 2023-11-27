@@ -10,6 +10,7 @@ sudo -i
     7  chmod +x ./kind
 
     8  sudo mv ./kind /usr/local/bin/kind
+apt-get update
 apt install docker.io
     9  kind create cluster --name project-nasa
    10  kind create cluster --name project-jpl
