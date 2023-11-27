@@ -1,5 +1,6 @@
 ###we will create multiple k8s cluster. 
   this is like minikube kind of this and switch from one cluster to another. 
+sudo -i
   ###first we need to install docker. 
    3  # For AMD64 / x86_64
   ##we will install kind which is similar to minikube kind of allow you to create multiple k8s cluster
