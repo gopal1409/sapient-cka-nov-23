@@ -25,4 +25,13 @@ apt install docker.io
    19  sudo apt-get install -y kubectl
      ###we will check we are in which cluster
    20  kubectl get nodes
+#####switch from one cluster to another
+###lets check currently we are in which cluster 
+kubectl config get-contexts
+###this will show you all the cluster check the pointer 
+###if you want to move to another cluster
+kubectl config use-context kind-project-nasa
+##this will show me i am in which cluster
+ kubectl config current-context
+
 
