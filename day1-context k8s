@@ -1,0 +1,24 @@
+###we will create multiple k8s cluster. 
+  this is like minikube kind of this and switch from one cluster to another. 
+  ###first we need to install docker. 
+   3  # For AMD64 / x86_64
+  ##we will install kind which is similar to minikube kind of allow you to create multiple k8s cluster
+    4  [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+    5  # For ARM64
+    6  [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-arm64
+    7  chmod +x ./kind
+    8  sudo mv ./kind /usr/local/bin/kind
+    9  kind create cluster --name project-nasa
+   10  kind create cluster --name project-jpl
+   11  kind create cluster --name project-hamster
+   12  docker ps
+      ###to manage this we required kubectl command line
+       14  sudo mkdir -m 755 /etc/apt/keyrings
+   15  sudo apt-get install -y apt-transport-https ca-certificates curl
+   16  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+   17  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+   18  sudo apt-get update
+   19  sudo apt-get install -y kubectl
+     ###we will check we are in which cluster
+   20  kubectl get nodes
+
