@@ -1,3 +1,6 @@
+###to regenrate the join command for another node
+ kubeadm token create --print-join-command --ttl 0
+
 ####to verify the master and workernode
   kubectl get nodes
   kubectl get nodes -o wide
