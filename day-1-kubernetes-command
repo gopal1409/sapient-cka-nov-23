@@ -4,3 +4,6 @@
 ####to verify the master and workernode
   kubectl get nodes
   kubectl get nodes -o wide
+#####verify all the pod are running as containers
+  11  kubectl get pod -A
+   12  crictl ps
