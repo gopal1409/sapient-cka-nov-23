@@ -33,5 +33,9 @@ kubectl config get-contexts
 kubectl config use-context kind-project-nasa
 ##this will show me i am in which cluster
  kubectl config current-context
+###all this configuration will exist somewhere in your system
+ 53  cd /root/.kube/
+   54  ls
+   55  cat config
 
 
