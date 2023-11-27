@@ -8,7 +8,9 @@ sudo -i
     5  # For ARM64
     6  [ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-arm64
     7  chmod +x ./kind
+
     8  sudo mv ./kind /usr/local/bin/kind
+apt install docker.io
     9  kind create cluster --name project-nasa
    10  kind create cluster --name project-jpl
    11  kind create cluster --name project-hamster
