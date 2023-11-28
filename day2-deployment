@@ -9,6 +9,7 @@
    77  kubectl delte pod myapp-b77fbcb86-pgjx
    80  kubectl get pod
 git pull
+74  kubectl apply -f deployment.yml
 ####
 root@k8smaster:~/sapient-k8s-manifest-nov# kubectl get deploy
 ##this will show your deployment
