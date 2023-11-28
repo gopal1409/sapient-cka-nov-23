@@ -37,4 +37,15 @@ kubectl edit deploy myapp
  101  kubectl rollout history deployment myapp
   102  kubectl rollout history deployment myapp --revision=1
   103  kubectl rollout history deployment myapp --revision=2
+###kubernetes rollback
+ 111  kubectl set image deploy myapp gopal=nginx:1.161
+  112  kubectl rollout status deployment myapp
+##this will stuck up you need to press CTRL c to terminate the session
+  113  kubectl get rs
+  114  kubectl rollout history deployment myapp
+  115  kubectl rollout undo deployment myapp
+  116  kubectl get deploy
+  117  kubectl rollout status deployment myapp
+  118  kubectl get rs
+  119  kubectl rollout undo deployment myapp --to-revision=1
 
