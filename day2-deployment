@@ -26,3 +26,11 @@ NAME                    READY   STATUS    RESTARTS   AGE
 myapp-cd8865fc6-2ttkz   1/1     Running   0          6m49s
 myapp-cd8865fc6-hk99w   1/1     Running   0          6m47s
 root@k8smaster:~/sapient-k8s-manifest-nov#
+####update the image using imperative way
+####kubectl set image deploy myapp nameoftheimage=updateimage
+kubectl set image deploy myapp gopal=nginx:1.16.1
+###the third way we can update directly
+kubectl edit deploy myapp
+####findout container image Press Esc i
+###after changing save the file using Press Esc :wq
+
