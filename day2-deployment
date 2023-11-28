@@ -33,4 +33,8 @@ kubectl set image deploy myapp gopal=nginx:1.16.1
 kubectl edit deploy myapp
 ####findout container image Press Esc i
 ###after changing save the file using Press Esc :wq
+###to check the rollout history
+ 101  kubectl rollout history deployment myapp
+  102  kubectl rollout history deployment myapp --revision=1
+  103  kubectl rollout history deployment myapp --revision=2
 
