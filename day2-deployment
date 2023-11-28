@@ -1,0 +1,10 @@
+  71  git clone https://github.com/gopal1409/sapient-k8s-manifest-nov.git
+   72  cd sapient-k8s-manifest-nov/
+   73  ls
+   74  kubectl apply -f deployment.yml
+   75  kubectl get deployment
+       78  kubectl get rs
+   76  kubectl get pod
+     ####kindly change the pod id
+   77  kubectl delte pod myapp-b77fbcb86-pgjx
+   80  kubectl get pod
