@@ -2,3 +2,10 @@
 ###to do the same we will create a directory in the second machine
 sudo -i
 mkdir /mnt/data
+####in the master machine
+cd sapient-k8s-manifest-nov
+  150  git pull
+  151  kubectl apply -f pv.yml
+  152  kubectl get pv
+  153  kubectl describe pv task-pv-volume
+
