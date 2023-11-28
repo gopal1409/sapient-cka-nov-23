@@ -48,4 +48,14 @@ kubectl edit deploy myapp
   117  kubectl rollout status deployment myapp
   118  kubectl get rs
   119  kubectl rollout undo deployment myapp --to-revision=1
+###in exm they will sale the deploy to 3 pod. 
+ 127  kubectl create deploy web --image=nginx
+  128  kubectl get deploy
+  129  kubectl scale deploy web --replicas=3
+  130  kubectl get deploy
+  131  kubectl create deploy web --image=nginx --dry-run=client -o yaml
+##3lets do autoscaling
+  134  kubectl get deploy
+  135  kubectl autoscale deployment web --min=5 --max=10 --cpu-percent=80
+  136  kubectl get hpa
 
