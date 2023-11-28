@@ -8,4 +8,14 @@ cd sapient-k8s-manifest-nov
   151  kubectl apply -f pv.yml
   152  kubectl get pv
   153  kubectl describe pv task-pv-volume
+###lets create the pvc
+git pull
+###delete the pv as i change the pv name
+ kubectl delete pv task-pv-volume
+ 166  kubectl apply -f pv.yml
+  167  kubectl get pv
+  168  kubectl -f apply pvc.yml
+  169  kubectl apply -f pvc.yml
+171  kubectl get pvc
+
 
