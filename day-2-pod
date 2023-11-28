@@ -20,3 +20,26 @@ spec:
   ####once applied
   kubectl get pod 
   kubectl describe pod
+###trouble shoot in pod
+  37  kubectl run kucc --image=nginx --dry-run=client -o yaml > pod2.yml
+   38  cat pod2.yml
+   39  vi pod2.yml
+####open the yaml file add second image you can use httpd
+   40  kubectl apply -f pod2.yml
+###after applying you will get error lets seee how to get more details about the error
+   41  kubectl get pod
+   42  kubectl describe pod kucc
+####kubectl logs will show more about the error and container logs also it show you
+   46  kubectl logs kucc
+###change the image from nginx to consul
+   47  vi pod2.yml
+##try to reapply the pod
+####check the error it is working or not
+   48  kubectl apply -f pod2.yml
+#####deelte the pod and reapply
+   50  kubectl delete pod kucc
+   51  kubectl apply -f pod2.yml
+kubectl describe pod kucc
+###check the error logs. 
+   52  kubectl get pod
+   53  kubectl describe pod kucc
