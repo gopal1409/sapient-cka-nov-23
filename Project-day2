@@ -17,5 +17,10 @@ git pull
   168  kubectl -f apply pvc.yml
   169  kubectl apply -f pvc.yml
 171  kubectl get pvc
+#####install secret
+  192  git pull
+  193  kubectl apply -f secret.yml
+  194  kubectl get secret
+  195  kubectl describe secret mysql-db-password
 
 
