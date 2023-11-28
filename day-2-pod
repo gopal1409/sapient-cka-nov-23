@@ -1,0 +1,22 @@
+###we need to create a pod with the name kucci and image should be nginx. 
+  ####open kubernetes.io documentation search for pod. 
+  ####inside the master machine create a yaml file
+  vi pod.yml
+  ###to insert inside vi editor Press Esc i
+  ####copy paste the pod defination from kubernetes documentation
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx ###change the name here
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2 ##change the image
+    ports:
+    - containerPort: 80
+####save the file by pressing Esc :wq!
+  ####after saving the file apply the manifest file
+  kubectl apply -f pod.yaml
+  ####once applied
+  kubectl get pod 
+  kubectl describe pod
