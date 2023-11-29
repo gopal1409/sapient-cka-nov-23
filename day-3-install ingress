@@ -7,4 +7,5 @@
 ###every web site is force you to use ssl certification. when i install ingress it comes only with ssl certificate. 
    305  kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
    ####copy the node machine ip and the port number
+  kubectl get svc -A
 
