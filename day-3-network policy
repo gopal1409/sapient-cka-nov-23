@@ -84,3 +84,27 @@ kubectl get pod -o wide
 292  kubectl exec frontend -- curl 192.168.1.2(ip of the backendpod)
 ###backend to frontend it will not work
 292  kubectl exec backend -- curl 192.168.1.3(the ip of frontend pod)
+
+###lets update the deny policy
+vi deny.yml
+######deny policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-network-policy
+  namespace: default
+spec:
+  podSelector: {}
+   
+  policyTypes:
+    - Ingress
+    - Egress
+    egress:
+    - ports:
+      - ports: 53
+        protocol: TCP
+      - ports: 53
+        protocol: UDP
+####apply this policy
+kubectl apply -f deny.yml
+292  kubectl exec frontend -- curl backend
