@@ -81,4 +81,6 @@ kubectl apply -f backend-policy.yml
 292  kubectl exec frontend -- curl backend
 kubectl get pod -o wide
 ##if naming convention not working check with the ip address of the pod
-292  kubectl exec frontend -- curl 192.168.1.2
+292  kubectl exec frontend -- curl 192.168.1.2(ip of the backendpod)
+###backend to frontend it will not work
+292  kubectl exec backend -- curl 192.168.1.3(the ip of frontend pod)
