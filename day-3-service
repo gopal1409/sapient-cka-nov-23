@@ -1,0 +1,10 @@
+###lets create the deployment and expose it
+224  kubectl create deploy webapp --image=nginx
+  225  kubectl get deploy
+  226  kubectl get svc
+  #####by default if you dont give any service type it will be exposed using clusterip
+  227  kubectl expose deploy webapp --port=80 --name=my-webapp-service
+  228  kubectl get svc
+  ####describe service will show you that your service is mapped to your endpoint which is the pod ip
+  229  kubectl describe svc my-webapp-service
+  230  kubectl get pod -o wide
