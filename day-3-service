@@ -14,3 +14,10 @@
  265  kubectl expose deploy webapp --type=NodePort --port=80 --name=my-webapp-service-nodeport
   266  kubectl get svc
 ###copy the second mchine ip in the browser:portnumber 
+####lets see that internally they talk to each other or not
+288  kubectl run frontend --image=nginx
+  289  kubectl run backend --image=nginx
+  290  kubectl expose pod frontend --port 80
+  291  kubectl expose pod backend --port 80
+  292  kubectl exec frontend -- curl backend
+  293  kubectl exec backend -- curl frontend
