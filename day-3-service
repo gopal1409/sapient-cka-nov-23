@@ -8,3 +8,9 @@
   ####describe service will show you that your service is mapped to your endpoint which is the pod ip
   229  kubectl describe svc my-webapp-service
   230  kubectl get pod -o wide
+
+####nodeport how to access the application outside k8s cluster using node port. node machine ip and the port number
+####nodeport has a range from 30,0000 till 320000
+ 265  kubectl expose deploy webapp --type=NodePort --port=80 --name=my-webapp-service-nodeport
+  266  kubectl get svc
+###copy the second mchine ip in the browser:portnumber 
