@@ -1,0 +1,9 @@
+###first we need to install ingress controller. 
+   300  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/cloud/deploy.yaml
+####check ingress is working or not
+  kubectl get svc -A
+ 
+ ##### Now a days by default ingress try to force you to use SSL certificatie as we dont have it we will delete the webhook validatioon
+   305  kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+   ####copy the node machine ip and the port number
+
