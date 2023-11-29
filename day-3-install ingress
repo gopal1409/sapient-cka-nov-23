@@ -4,6 +4,7 @@
   kubectl get svc -A
  
  ##### Now a days by default ingress try to force you to use SSL certificatie as we dont have it we will delete the webhook validatioon
+###every web site is force you to use ssl certification. when i install ingress it comes only with ssl certificate. 
    305  kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
    ####copy the node machine ip and the port number
 
