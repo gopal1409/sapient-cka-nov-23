@@ -6,3 +6,22 @@
   292  kubectl exec frontend -- curl backend
   293  kubectl exec backend -- curl frontend
 ####the above mentioned example will create two pod and this two pod will by default communicate with each other. 
+vi deny.yml
+######deny policy
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-network-policy
+  namespace: default
+spec:
+  podSelector: {}
+   
+  policyTypes:
+    - Ingress
+    - Egress
+  ####save this file and apply it
+kubectl apply -f deny.yml
+kubectl get networkpolicy
+#####after applying test the connection between the pod
+292  kubectl exec frontend -- curl backend
+  293  kubectl exec backend -- curl frontend
