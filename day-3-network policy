@@ -25,3 +25,32 @@ kubectl get networkpolicy
 #####after applying test the connection between the pod
 292  kubectl exec frontend -- curl backend
   293  kubectl exec backend -- curl frontend
+
+###next we will create a rule egresss rule which can intiate traffic to the backend but how it is going to select the backend
+vi frontend-policy.yml
+#######################
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontend-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      run: frontend 
+  policyTypes:
+    
+    - Egress
+  egress:
+    - to:
+        
+        - podSelector:
+            matchLabels:
+              run: backend
+####apply the policy
+kubectl apply -f frontend-policy.yml
+######now if i think i can intiate connection to the backend
+292  kubectl exec frontend -- curl backend
+kubectl get pod -o wide
+##if naming convention not working check with the ip address of the pod
+292  kubectl exec frontend -- curl 192.168.1.2
