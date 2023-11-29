@@ -27,6 +27,23 @@ git pull
   198  kubectl apply -f configmap.yml
   199  kubectl get configmap
   200  kubectl describe configmap usermanagement-db-script
-
+##day 3 cont on mysql
+ 206  cd sapient-k8s-manifest-nov/
+  207  git pull
+  208  kubectl apply -f mysql-deployment.yml
+kubectl get deploy
+kubectl get pod
+###get the pod id we will login inside the pod
+ kubectl exec -it mysql-55f45cc544-swbx2 -- /bin/bash
+####this are mysql command
+mysql -u root -p
+######type the password as dbpassword11
+show databases;
+####verify the database path login inside the second machine
+ls /mnt/data 
+you will see the database
+#####################################
+exit
+exit
 
 
