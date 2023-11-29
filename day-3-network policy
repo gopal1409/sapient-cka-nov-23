@@ -91,20 +91,20 @@ vi deny.yml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: deny-network-policy
+  name: deny
   namespace: default
 spec:
   podSelector: {}
-   
   policyTypes:
-    - Ingress
-    - Egress
-    egress:
-    - ports:
-      - ports: 53
-        protocol: TCP
-      - ports: 53
-        protocol: UDP
+  - Egress
+  - Ingress
+  egress:
+  - ports:
+    - port: 53
+      protocol: TCP
+    - port: 53
+      protocol: UDP
+
 ####apply this policy
 kubectl apply -f deny.yml
 292  kubectl exec frontend -- curl backend
