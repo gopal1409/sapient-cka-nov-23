@@ -1,0 +1,9 @@
+  351  clear
+  352  kubectl get ns
+  353  kubectl create ns dev
+  354  kubectl -n
+  355  kubectl -n dev run nginx
+  356  kubectl -n dev run --image=nginx
+  357  kubectl -n dev run webdev --image=nginx
+  358  kubectl get pod
+  359  kubectl get pod --namespace=dev
