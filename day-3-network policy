@@ -54,3 +54,31 @@ kubectl apply -f frontend-policy.yml
 kubectl get pod -o wide
 ##if naming convention not working check with the ip address of the pod
 292  kubectl exec frontend -- curl 192.168.1.2
+###backend should accept the connection we need to create an ingress routing for the backend
+vi backend-policy.yml
+#######################
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      run: backend
+  policyTypes:
+    
+    - Ingress
+  ingress:
+    - from:
+        
+        - podSelector:
+            matchLabels:
+              run: frontend
+####apply the policy
+kubectl apply -f backend-policy.yml
+######now if i think i can intiate connection to the backend
+292  kubectl exec frontend -- curl backend
+kubectl get pod -o wide
+##if naming convention not working check with the ip address of the pod
+292  kubectl exec frontend -- curl 192.168.1.2
