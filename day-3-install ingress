@@ -8,4 +8,48 @@
    305  kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
    ####copy the node machine ip and the port number
   kubectl get svc -A
+###w2e will create two pod and expose the pod using clusterip
+316  kubectl run pod1 --image=nginx
+  317  kubectl run pod2 --image=httpd
+  318  kubectl get pod
+  319  kubectl expose pod pod1 --port 80 --name service1
+  320  kubectl expose pod pod2 --port 80 --name service2
+  321  kubectl get svc
+######lets map this two service with ingress manifest. 
+##create an manifest and attach service and service2 16% plus they way say when you attach the service running on 5189
+vi ingress.yml
+#######press esc i
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gopal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /service1
+        pathType: Prefix
+        backend:
+          service:
+            name: service1
+            port:
+              number: 80
+      - path: /service2
+        pathType: Prefix
+        backend:
+          service:
+            name: service2
+            port:
+              number: 80
+####apply it using Press Esc :wq
+338  kubectl apply -f ingress.yml
+  339  kubectl get ingress
+41  kubectl describe ingress gopal-ingress
+####verify the relation between ingress-to-service-to-pod
+ 345  kubectl get pod -o wide
+  346  kubectl describe ingress gopal-ingress
+
 
