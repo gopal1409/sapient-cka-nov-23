@@ -105,6 +105,7 @@ spec:
     - port: 53
       protocol: UDP
 
+
 ####apply this policy
 kubectl apply -f deny.yml
 292  kubectl exec frontend -- curl backend
