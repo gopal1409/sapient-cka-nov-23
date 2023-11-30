@@ -6,3 +6,10 @@ error: Metrics API not available
 root@k8smaster:~# kubectl top nodes
 error: Metrics API not available
 root@k8smaster:~#
+###we need to install matrics server. 
+https://github.com/kubernetes-sigs/metrics-server
+##########
+apply it
+######################
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+kubectl get pod -A
