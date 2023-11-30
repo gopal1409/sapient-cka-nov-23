@@ -17,3 +17,10 @@ You need to also validate the same.
   530  kubectl -n project-hamster auth can-i create configmap --as system:serviceaccount:project-hamster:jane
   531  kubectl -n project-hamster auth can-i create pod --as system:serviceaccount:project-hamster:jane
   532  kubectl -n project-hamster auth can-i create deployment --as system:serviceaccount:project-hamster:jane
+###lets create the dashboard
+ 535  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+  536  kubectl get pod -A
+  537  kubectl get svc -A
+  538  kubectl edit svc  kubernetes-dashboard --namespace=kubernetes-dashboard
+####change the clusterip to NodePort
+  539  kubectl get svc -A
