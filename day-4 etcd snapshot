@@ -11,3 +11,9 @@
   /opt/kun001/etcd-client.crt
   3. client key
   /opt/kun001/etcd-client.key
+
+####etcd configuration where it is located
+ 473  cd /etc/kubernetes/manifests/
+  474  ls
+  475  cat etcd.yaml
+
