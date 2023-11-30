@@ -13,3 +13,19 @@ apply it
 ######################
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 kubectl get pod -A
+####to make the matrics server running as we dont not have tls encryption
+ 552  kubectl get deploy -A
+  553  kubectl -n kube-system edit deploy metrics-server
+##################################################inside container defination of metrics server we need to put a line - --kubelet-insecure-tls
+ containers:
+      - args:
+        - --cert-dir=/tmp
+        - --kubelet-insecure-tls
+        - --secure-port=4443
+        - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+        - --kubelet-use-node-status-port
+        - --metric-resolution=15s
+############save the file
+kubectl top pod
+kubectl get pod
+
