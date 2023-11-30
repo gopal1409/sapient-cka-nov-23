@@ -105,6 +105,9 @@ spec:
               ns: cassandra
 ###########save it apply the file
 kubectl apply -f backend.yml
+###lets create a pod in cassandra namespace
+422  kubectl -n cassandra run cassandra --image=nginx
+
 #########verify it
  450  kubectl get pod -A -o wide
 ###ip address is the address of the cassandra pod
