@@ -112,3 +112,45 @@ kubectl apply -f backend.yml
  450  kubectl get pod -A -o wide
 ###ip address is the address of the cassandra pod
   451  kubectl exec backend -- curl 192.168.1.13
+####disable the casandra deny 
+vi dbdeny.yml
+#####################
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: dbdeny
+  namespace: cassandra
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  - Ingress
+  egress:
+  - ports:
+    - port: 53
+      protocol: TCP
+    - port: 53
+      protocol: UDP
+########create a new policy for the cassandra pod so that it can accept incoming request ingress routing
+vi casa.yml
+#####################################
+# allows cassandra pods having incoming connection from backend namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cassandra
+  namespace: cassandra
+spec:
+  podSelector:
+    matchLabels:
+      run: cassandra
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            ns: default
+      - podSelector:
+          matchLabels:
+             run: backend
