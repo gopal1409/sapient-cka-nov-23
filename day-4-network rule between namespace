@@ -70,4 +70,5 @@ spec:
     - port: 53
       protocol: UDP
 
-    
+####to verfiy the policy
+kubectl get networpolicy --namespace=cassandra
