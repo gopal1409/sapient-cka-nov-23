@@ -1,0 +1,13 @@
+###create a snapshot of the given instance is expected to complete in second if the operation seens to hang
+  or something wrong going on Press Ctrl C
+  cancel it and try agains
+  #####
+  next restore previous snapshot located at /var/lib/backup/etcd-snapsho-previous.db
+  ###the following TLS certificate are supplied to connect to the server 
+  etcdctl
+  1. CA certificate
+    /opt/kun001/ca.crt
+  2. client certificate
+  /opt/kun001/etcd-client.crt
+  3. client key
+  /opt/kun001/etcd-client.key
