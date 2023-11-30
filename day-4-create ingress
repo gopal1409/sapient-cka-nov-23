@@ -1,0 +1,29 @@
+Create a new ingress resource as follow
+Name: ping
+Namespace: ing-internal
+Expose the service on hi on path /hi using service port 5678
+##3open kubernetes.io in the documentation search for ingress
+  vi ingress.yml
+  ##################
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ping
+  namespace: ing-internal
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-example
+  rules:
+  - http:
+      paths:
+      - path: /hi
+        pathType: Prefix
+        backend:
+          service:
+            name: hi
+            port:
+              number: 5678
+####apply 
+                kubectl apply -f ingress.yml
+                ####you will get 7%
