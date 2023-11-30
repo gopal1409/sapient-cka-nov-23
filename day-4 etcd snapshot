@@ -16,4 +16,40 @@
  473  cd /etc/kubernetes/manifests/
   474  ls
   475  cat etcd.yaml
+#####
+ - command:
+    - etcd
+    - --advertise-client-urls=https://10.0.0.4:2379
+    - --cert-file=/etc/kubernetes/pki/etcd/server.crt ####certificate file path
+    - --client-cert-auth=true
+    - --data-dir=/var/lib/etcd
+    - --experimental-initial-corrupt-check=true
+    - --experimental-watch-progress-notify-interval=5s
+    - --initial-advertise-peer-urls=https://10.0.0.4:2380
+    - --initial-cluster=k8smaster=https://10.0.0.4:2380
+    - --key-file=/etc/kubernetes/pki/etcd/server.key #### server.key
+    - --listen-client-urls=https://127.0.0.1:2379,https://10.0.0.4:2379 ##this is the endpoint
+    - --listen-metrics-urls=http://127.0.0.1:2381
+    - --listen-peer-urls=https://10.0.0.4:2380
+    - --name=k8smaster
+    - --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
+    - --peer-client-cert-auth=true
+    - --peer-key-file=/etc/kubernetes/pki/etcd/peer.key
+    - --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt ####this is the ca certificate
+    - --snapshot-count=10000
+    - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+    image: registry.k8s.io/etcd:3.5.9-0
+
+####to take the backup
+ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/opt/kun001/ca.crt \
+     --cert=/opt/kun001/etcd-client.crt --key= /opt/kun001/etcd-client.key \
+     snapshot save /tmp/etcd-backup.db
+####lets take the backup
+  484  ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot save /tmp/etcd-backup.db
+  485  ls /tmp/
+###after taking the backup in the tmp directory we created a pod called as testetcd
+  486  kubectl run testetcd --image=nginx
+  487  kubectl get pod
+#######now if i restore the previous backup the testetcd pod will not be avaiable. 
+
 
