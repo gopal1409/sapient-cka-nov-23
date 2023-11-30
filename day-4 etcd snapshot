@@ -58,3 +58,20 @@ mkdir /var/lib/etcd-backup
 ###after restoring the back the pod which we have created earlier after taking backup it will exist
 kubectl get pod 
 ####check the testetcd is showing running or not
+
+###we need to change the volume path
+cd /etc/kubernetes/manifests
+vi etcd.yaml
+#####go to the extreme end of the file
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes/pki/etcd
+      type: DirectoryOrCreate
+    name: etcd-certs
+  - hostPath:
+     # path: /var/lib/etcd
+      path: /var/lib/etcd-backup
+      type: DirectoryOrCreate
+    name: etcd-data
+
+
