@@ -1,0 +1,8 @@
+###from the pod label name-cpu-utilizer, find pods running with high cpu workload and write the name of the pod consuming
+  most cpu to the file /opt/kucc1/kur.sh
+  #####to find the pod utlization or node utilization 
+  root@k8smaster:~# kubectl top pod
+error: Metrics API not available
+root@k8smaster:~# kubectl top nodes
+error: Metrics API not available
+root@k8smaster:~#
