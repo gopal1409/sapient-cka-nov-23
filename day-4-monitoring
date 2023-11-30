@@ -28,4 +28,6 @@ kubectl get pod -A
 ############save the file
 kubectl top pod
 kubectl get pod
+####
+kubectl top pod -l name=cpu-utilizer >> /opt/kucc1/kur.sh
 
