@@ -1,0 +1,11 @@
+one of the node is showing not ready make it ready and make it permanent
+  ####first we need to see how to make the node not ready
+  ###loging to the second machine
+  systemctl stop kubelet
+  ######wait for few min and check from the master node
+  kubectl get nodes
+  ####after few min
+  root@k8smaster:~# kubectl get nodes
+NAME        STATUS     ROLES           AGE     VERSION
+k8smaster   Ready      control-plane   2d19h   v1.28.2
+k8snode     NotReady   <none>          2d19h   v1.28.2
