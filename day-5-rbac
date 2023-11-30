@@ -1,0 +1,19 @@
+Create a new serviceaccount jane in the namespace project-hamster. Create a role and rolebinding name if the role will be janerole and rollbinding name will be janerolebinding .
+  This should allow the new service account to only create secret and configmap in that particular namespace.
+You need to also validate the same. 
+  ##lets first create the namespace
+  517  kubectl create ns  project-hamster
+###we will create the service account called as jane
+ 518  kubectl -n project-hamster create sa jane
+  519  kubectl -n project-hamster get sa jane
+  
+  521  kubectl -n project-hamster create role --help
+  522  kubectl -n project-hamster create role janerole --verb=create --resource=secret --resource=configmap
+  523  kubectl -n project-hamster describe role janerole
+
+  ###now we will bind the role with service account
+  528  kubectl -n project-hamster create rolebinding -h
+  529  kubectl -n project-hamster create rolebinding janebinding --role janerole --serviceaccount  project-hamster:jane
+  530  kubectl -n project-hamster auth can-i create configmap --as system:serviceaccount:project-hamster:jane
+  531  kubectl -n project-hamster auth can-i create pod --as system:serviceaccount:project-hamster:jane
+  532  kubectl -n project-hamster auth can-i create deployment --as system:serviceaccount:project-hamster:jane
