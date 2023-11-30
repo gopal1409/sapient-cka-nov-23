@@ -26,3 +26,24 @@ You need to also validate the same.
   538  kubectl edit svc  kubernetes-dashboard --namespace=kubernetes-dashboard
 ####change the clusterip to NodePort
   539  kubectl get svc -A
+###lets create a service account for the dashboard. 
+kubectl -n kubernetes-dashboard create sa admin-user
+####once we create a sa called as admin user. i need to apply this to the clusterrole
+vi dashboard-role.yml
+##############################################
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+#######apply the manifest
+kubectl apply -f dashboard-role.yml
+#####i need to generate a bearer token
+kubectl -n kubernetes-dashboard create token admin-user
