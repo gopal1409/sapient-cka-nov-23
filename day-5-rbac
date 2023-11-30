@@ -17,6 +17,8 @@ You need to also validate the same.
   530  kubectl -n project-hamster auth can-i create configmap --as system:serviceaccount:project-hamster:jane
   531  kubectl -n project-hamster auth can-i create pod --as system:serviceaccount:project-hamster:jane
   532  kubectl -n project-hamster auth can-i create deployment --as system:serviceaccount:project-hamster:jane
+##using bearer token send the request
+ curl -X POST https://172.31.85.2:6443/api/v1/namespaces/project-hamster/secrets -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImJyWHZXTGZBcFp6a05YbXNNZlJzLURzSmNkYVBTQnB4YVo2S25iWnhDN2MifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjk5NDU1NzA1LCJpYXQiOjE2OTk0NTIxMDUsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJwcm9qZWN0LWhhbXN0ZXIiLCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiamFuZSIsInVpZCI6IjljYTVhYTEwLTFhZjEtNDE2OC04ZTQzLTUwNjk0MmMzYmNiZCJ9fSwibmJmIjoxNjk5NDUyMTA1LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6cHJvamVjdC1oYW1zdGVyOmphbmUifQ.y13TvuF9PIDMEdSN1IRu0MCjgUEb5AwLyk3nZEd5nxLHxybBTo9vOBKV_VG_dgO_zwmNfmYh-ZIODmj6uwBFsbBFDi7NmdvkmquThFvzPPY77X0MSJYrDYNb6fLHgJuzcjldG1r66ULbKEYdpSzDA_XoTb7_mYsuQbWV6g_hFzHPUAVm_4LRemkoNRncaq6Y60GxonCNRBgfRCCYAQ190z1Fa8ZOv5qyJk5HAdO0XxCT-7C45yP4KFezfC-wRZwFJkL_Sv-1CJbPhTR3JwWzEJe47-s_sflcQ8Dyxm5uvC3DyYMZm0KOKsFHIQC_oTW65CcTVb50k9za2mFKv3y25w" -H "Content-Type: application/yaml" --data-binary @secret.yml --cacert /etc/kubernetes/pki/ca.crt
 ###lets create the dashboard
  535  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
   536  kubectl get pod -A
