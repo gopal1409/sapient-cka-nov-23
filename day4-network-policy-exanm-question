@@ -1,0 +1,29 @@
+create a network policy name allow-port-from-namespace in the existing namespace fubar
+  ensure that the new networkpolicy allow pods in namespace internal to connect to port 9000 of pods in namespace fubar
+  further ensure that the new network policy
+  1. doesnot allow access to pods which dont listen on port 9000
+  2. does not allow access from pods which are not in namespace internal
+  vi np.yml
+  #####copy the policy from the kubernetesx docs
+  apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-port-from-namespace
+  namespace: fubar
+spec:
+  podSelector: {}
+    
+  policyTypes:
+    - Ingress
+    
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+               kubernetes.io/metadata.name: internal
+
+        
+      ports:
+        - protocol: TCP
+          port: 9000
+  
