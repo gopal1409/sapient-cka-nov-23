@@ -9,3 +9,8 @@ one of the node is showing not ready make it ready and make it permanent
 NAME        STATUS     ROLES           AGE     VERSION
 k8smaster   Ready      control-plane   2d19h   v1.28.2
 k8snode     NotReady   <none>          2d19h   v1.28.2
+
+####start the service
+systemctl start kubelet
+systemctl enable kubelet
+###this will put the kubelet in startup
