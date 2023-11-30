@@ -1,0 +1,73 @@
+####edit the default namespace and add the labels
+  kubectl edit ns default
+  #######add the label
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2023-11-27T10:54:36Z"
+  labels:
+    kubernetes.io/metadata.name: default
+  name: default
+  resourceVersion: "43"
+  uid: bbc29d15-aa09-4909-8f49-29594ec2fbdb
+  labels: ##add this line
+    ns: default  ###add this line
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
+    #####finally save the file
+    ###lets create another namespace and add the labels
+kubectl create ns cassandra
+  kubectl edit ns cassandra
+    ######add the label and save the file
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2023-11-30T04:45:15Z"
+  labels:
+    kubernetes.io/metadata.name: cassandra
+  name: cassandra
+  resourceVersion: "88478"
+  uid: 2ccadc27-6ca5-417f-8839-7d6b650f29db
+  labels: ###add this line
+    ns: cassandra ###add this line
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
+######lets create a deny rule in the cassandra namespace
+    
+  ##we already have the deny rule
+     402  cp deny.yml dbdeny.yml
+####lets modify the deny rule
+    vi dbdeny.yml
+    ##########
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: dbdeny ###new name of the policy
+  namespace: cassandra ###this is the namespace
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  - Ingress
+  egress:
+  - ports:
+    - port: 53
+      protocol: TCP
+    - port: 53
+      protocol: UDP
+
+    
