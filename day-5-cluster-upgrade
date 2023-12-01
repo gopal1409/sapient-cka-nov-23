@@ -23,4 +23,5 @@ kubectl drain k8s-master-old --ignore-daemonsets --delete-emptydir-data
 kubectl get nodes
 #####updat the master or worker node using the linux command
 apt-get update
+###this will show you what are the latest version of kubernetes is available. 
  apt-cache madison kubeadm
