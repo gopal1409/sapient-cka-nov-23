@@ -6,4 +6,31 @@
 kubectl get nodes 
 
 ###then loging to the node machine
+####update the node machine
+ 4  apt-get update
+###check which version of kubeadm
+    5  apt-cache show kubeadm | grep 1.28
+######hold or pause kubelet and kubectl
+    6  apt-mark hold kubelet kubectl
+###unhold kubeadm
+    7  apt-mark unhold kubeadm
+#####update the kubeadm package with the version
+    8  apt-get install kubeadm=1.28.0-1.1
+###run the kubeadm upgrade node command
+    9  kubeadm upgrade node
+###update the kubectl and kubelet
+   10  apt-mark unhold kubectl kubelet
+   11  apt-get install kubectl=1.28.0-1.1 kubelet=1.28.0-1.1
+###restart the kubelet service
+
+   12  systemctl restart kubelet
+   13  systemctl status kubelet
+#####go back to master machine 
+####check node has been upgraded or not
+kubectl get nodes
+###finally take the node back to the cluster
+  41  kubectl uncordon k8s-node-old
+   42  kubectl get nodes
+
+
   
