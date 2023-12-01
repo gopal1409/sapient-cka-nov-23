@@ -19,5 +19,6 @@ name: my-nginx
 version: 0.1.0
 description: this is my first chart
 ###then save the file
-
+then we will create templates directory
+mkdir templates
 
