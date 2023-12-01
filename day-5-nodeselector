@@ -1,0 +1,18 @@
+ 145  kubectl get nodes --show-labels
+   ##to replicate the secnario we are creationg the label
+  146  kubectl label nodes k8s-node-old disktype=ssd
+  147  kubectl get nodes --show-labels
+   ###create the pod as per the question
+  148  kubectl run nginx-kusc --image=nginx --port=80 --dry-run=client -o yaml > nodepod.yml
+  149  vi nodepod.yml
+   #####delete the last few lines
+   from the documentation add this line so that the pod will be scheduled in the particular node
+   https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/
+  150  kubectl apply -f nodepod.yml
+  
+  153  kubectl get pod
+  154  kubectl get pod -o wide
+  155  kubectl describe pod nginx-kusc
+  156  history
+  157  kubectl get pod
+  158  kubectl describe pod my-nginx-64f6999999-dfr2b
