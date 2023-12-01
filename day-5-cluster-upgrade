@@ -1,0 +1,9 @@
+####install older version of k8s 1.27
+  # master
+bash <(curl -s https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/previous/install_master.sh)
+
+# worker
+bash <(curl -s https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/previous/install_worker.sh)
+
+
+upgrade the same to 1.28
