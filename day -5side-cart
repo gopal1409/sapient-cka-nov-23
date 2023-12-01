@@ -50,6 +50,10 @@ spec:
   - name: sidecar
     image: busybox:1.28
     args: [/bin/sh,-c,"tail -n+1 -f /var/log/big-copr-app.log"]
+    volumeMounts:
+    - mountPath: /var/log
+      name: varlog
+
 ###after this save the file by pressing esc :wq try it two times
 ###it will create a temporary file in your temp directory
 ###something like this you will see in your temp directory
