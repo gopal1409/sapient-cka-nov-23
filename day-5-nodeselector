@@ -16,3 +16,21 @@
   156  history
   157  kubectl get pod
   158  kubectl describe pod my-nginx-64f6999999-dfr2b
+####final yaml file with node selector
+root@k8s-master-old:~/my-nginx# cat nodepod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx-kusc
+  name: nginx-kusc
+spec:
+  containers:
+  - image: nginx
+    name: nginx-kusc
+    ports:
+    - containerPort: 80
+  nodeSelector:
+    disktype: ssd
+
