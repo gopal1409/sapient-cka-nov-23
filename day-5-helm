@@ -1,0 +1,8 @@
+###first lets install the helm package manager
+   78  wget https://get.helm.sh/helm-v3.13.2-linux-amd64.tar.gz
+   79  tar zxvf helm-v3.13.2-linux-amd64.tar.gz
+   80  cd linux-amd64/
+   81  ls
+   82  mv helm /usr/bin
+   83  cd /root
+   84  helm
