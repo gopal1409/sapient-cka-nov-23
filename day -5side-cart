@@ -4,3 +4,40 @@ Add a sidecar container namesidecar using the busy box image to the exisitng pod
 
 /bin/sh -c "tail -n+1 -f /var/log/big-corp-app.log"
 Use the volume mounted at /var/log to make the log file big-corp-app.log avaaible to the sidecar container
+
+####lets create a pod first
+####lets create a pod which generate the logs
+###vi big-corp.yml
+########################################
+apiVersion: v1
+kind: Pod
+metadata:
+  name: big-corp
+spec:
+  containers:
+  - name: count
+    image: busybox:1.28
+    args:
+    - /bin/sh
+    - -c
+    - >
+      i=0;
+      while true;
+      do
+        echo "$i: $(date)" >> /var/log/big-copr-app.log;
+        echo "$(date) INFO $i" >> /var/log/2.log;
+        i=$((i+1));
+        sleep 1;
+      done      
+    volumeMounts:
+    - name: varlog
+      mountPath: /var/log
+  volumes:
+  - name: varlog
+    emptyDir: {}
+######apply this file
+kubectl apply -f big-corp.yml
+kubectl get pod
+##########add a sidecart container name sidecar usign the image busy box to the existing pod big-corp. and the new side car contains run the folliwing command
+
+/bin/sh -c "tail -n+1 -f /var/log/big-copr-app.log"
