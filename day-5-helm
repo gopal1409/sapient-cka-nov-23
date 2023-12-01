@@ -61,4 +61,19 @@ spec:
 ####update the helm chart from value.yml file
  helm upgrade my-nginx . --set replicaCount=3
 kubectl get all
+###how to call sub values in helm chart
+vi values.yaml
+#####add the service value
+replicaCount: 1
+service:
+  type: NodePort
+#######saave it
+vi templates/service.yml
+###### below specification add this
+spec:
+  type: {{.Values.service.type}}
+#####how to use this value with helm chart
+ 138  helm upgrade my-nginx . --set service.type=NodePort
+  139  helm upgrade my-nginx . --set service.type=ClusterIP
+
 
