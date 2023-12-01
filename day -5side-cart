@@ -1,0 +1,6 @@
+Creating a sidecart pod
+An existing pod need to be integrated into the kubernetes build in logging architecture kubectl logs . Adding a stream side car is a good common way to accomplish this requirement
+Add a sidecar container namesidecar using the busy box image to the exisitng pod big-corp-app. The need side car has to run the following command
+
+/bin/sh -c "tail -n+1 -f /var/log/big-corp-app.log"
+Use the volume mounted at /var/log to make the log file big-corp-app.log avaaible to the sidecar container
