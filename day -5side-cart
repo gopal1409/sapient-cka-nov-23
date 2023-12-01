@@ -41,3 +41,23 @@ kubectl get pod
 ##########add a sidecart container name sidecar usign the image busy box to the existing pod big-corp. and the new side car contains run the folliwing command
 
 /bin/sh -c "tail -n+1 -f /var/log/big-copr-app.log"
+######lets see how to do the exercise
+###first we need to edit the big-corp
+52  kubectl edit pod big-corp
+#####inside that search for containers. 
+spec:
+  containers:
+  - name: sidecar
+    image: busybox:1.28
+    args: [/bin/sh,-c,"tail -n+1 -f /var/log/big-copr-app.log"]
+###after this save the file by pressing esc :wq try it two times
+###it will create a temporary file in your temp directory
+###something like this you will see in your temp directory
+/tmp/kubectl-edit-2638302317.yaml
+####then delete the running pod
+kubectl delete pod big-corp
+####apply the new manifest from temp directory
+kubectl apply -f /tmp/kubectl-edit-2638302317.yaml
+###then see the pod is created with 2 container and they are showing 2/2
+the check the log from side cart container
+kubectl logs big-corp -c sidecar
