@@ -10,4 +10,6 @@ upgrade the same to 1.28
 
 ###3lets verify the cluster version
  kubectl get nodes -o wide
+####first you need to check the upgrade path
+https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
 
