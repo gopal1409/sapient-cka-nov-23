@@ -27,6 +27,10 @@ mkdir templates
    96  cat templates/deployment.yml
 ###lets install the package in helm install
 helm install my-nginx .
+####verify that the deployment is created or not
+kubectl get deploy
 #######to uninstall the chart
 helm list
 helm uninstall nameofthechart
+###after uninstall verify that the deployment is delete or not
+kubectl get deploy
