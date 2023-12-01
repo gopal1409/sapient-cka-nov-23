@@ -6,3 +6,18 @@
    82  mv helm /usr/bin
    83  cd /root
    84  helm
+####to create helm chart we will create a directory and store all the information inside the directory
+https://helm.sh/docs/topics/charts/
+apt install tree
+mkdir my-nginx
+cd my-nginx
+#####lets create chart.yaml
+vi Chart.yaml
+#########
+apiVersion: v1
+name: my-nginx
+version: 0.1.0
+description: this is my first chart
+###then save the file
+
+
