@@ -48,4 +48,17 @@ kubectl get all
 kubectl get all
   111  helm rollback my-nginx 2
 kubectl get all
-  
+  ####lets understand what is values.yaml file importance in helm chart
+ vi values.yaml
+#####inside this file
+replicaCount: 1
+######save the file
+lets call this value inside deployment file
+ vi templates/deployment.yml
+#######modify the replic
+spec:
+  replicas: {{.Values.replicaCount}}
+####update the helm chart from value.yml file
+ helm upgrade my-nginx . --set replicaCount=3
+kubectl get all
+
