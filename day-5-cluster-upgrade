@@ -21,3 +21,6 @@ kubectl drain k8s-master-old --ignore-daemonsets --delete-emptydir-data
 ####if drainig takes time. --force
 ###once drain kubectl get nodes will show that scheduling is disabled
 kubectl get nodes
+#####updat the master or worker node using the linux command
+apt-get update
+ apt-cache madison kubeadm
