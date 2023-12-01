@@ -21,4 +21,7 @@ description: this is my first chart
 ###then save the file
 then we will create templates directory
 mkdir templates
-
+###lets create a deployement in templates folder
+ 94  kubectl create deploy my-nginx --image=nginx --port=80 --dry-run=client -o yaml > templates/deployment.yml
+   95  tree
+   96  cat templates/deployment.yml
