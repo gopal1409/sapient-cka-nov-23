@@ -1,4 +1,8 @@
 ###how to upgrade the node
   ###first we need to drain the node and evict all the running pod inside the node
   ###we will do the same from the master machine
+  34  kubectl get nodes -o wide
+   35  kubectl drain node k8s-node-old --ignore-daemonsets --delete-emptydir-data
+   36  kubectl drain k8s-node-old --ignore-daemonsets --delete-emptydir-data
+###then loging to the node machine
   
