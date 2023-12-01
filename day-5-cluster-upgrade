@@ -43,3 +43,11 @@ kubeadm version
   23  kubeadm upgrade plan
 ####upgrade to the version we have update previously do not choose the 
 kubeadm upgrade apply v1.28.0
+#####once you upgrade it do not forget to restart the kubelet service
+systemctl restart kubelet
+###make the node online
+kubectl get node 
+####it will show you noscheduling
+29  kubectl get nodes
+   30  kubectl uncordon k8s-master-old
+   31  kubectl get nodes
