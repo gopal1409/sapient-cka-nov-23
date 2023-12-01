@@ -25,3 +25,8 @@ mkdir templates
  94  kubectl create deploy my-nginx --image=nginx --port=80 --dry-run=client -o yaml > templates/deployment.yml
    95  tree
    96  cat templates/deployment.yml
+###lets install the package in helm install
+helm install my-nginx .
+#######to uninstall the chart
+helm list
+helm uninstall nameofthechart
