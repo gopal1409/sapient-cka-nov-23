@@ -25,3 +25,11 @@ kubectl get nodes
 apt-get update
 ###this will show you what are the latest version of kubernetes is available. 
  apt-cache madison kubeadm
+####to check what is the latest version of kubeadm
+kubeadm version
+kubectl version
+####to see the upgrade or the package path
+ 15  apt-cache madison kubelet
+   16  apt-cache madison kubeadm
+   17  apt-cache madison kubectl
+
