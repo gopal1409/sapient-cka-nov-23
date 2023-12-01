@@ -34,3 +34,18 @@ helm list
 helm uninstall nameofthechart
 ###after uninstall verify that the deployment is delete or not
 kubectl get deploy
+####using helm upgrade the chart and rollback
+104  helm install my-nginx .
+  105  kubectl expose deploy my-nginx --port=80 --dry-run=client -o yaml > templates/service.yml
+  106  tree
+  107  helm list
+####lets upgrade the chart
+  108  helm upgrade my-nginx .
+kubectl get all
+  109  helm list
+####lets do rollback
+  110  helm rollback my-nginx 1
+kubectl get all
+  111  helm rollback my-nginx 2
+kubectl get all
+  
