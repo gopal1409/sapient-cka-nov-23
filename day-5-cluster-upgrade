@@ -7,3 +7,7 @@ bash <(curl -s https://raw.githubusercontent.com/killer-sh/cks-course-environmen
 
 
 upgrade the same to 1.28
+
+###3lets verify the cluster version
+ kubectl get nodes -o wide
+
