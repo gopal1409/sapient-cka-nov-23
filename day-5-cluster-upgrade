@@ -39,3 +39,5 @@ kubelet --version
  apt-get install kubeadm=1.28.0-1.1 kubectl=1.28.0-1.1 kubelet=1.28.0-1.1
 ###to verify 
 kubeadm version
+###this will give you upgrade plan
+  23  kubeadm upgrade plan
