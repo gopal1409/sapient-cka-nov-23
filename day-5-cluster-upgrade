@@ -12,4 +12,12 @@ upgrade the same to 1.28
  kubectl get nodes -o wide
 ####first you need to check the upgrade path
 https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
-
+###how to upgrade the master node
+####an admin want to take down one of the node for maintance purpose. 
+#####you need evict the running pod inside the node and disable scheduling on that node
+####first thing we will stop scheduling
+i need to drain the node
+kubectl drain k8s-master-old --ignore-daemonsets --delete-emptydir-data 
+####if drainig takes time. --force
+###once drain kubectl get nodes will show that scheduling is disabled
+kubectl get nodes
