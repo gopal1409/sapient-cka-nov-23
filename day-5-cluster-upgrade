@@ -34,3 +34,8 @@ kubelet --version
    16  apt-cache madison kubeadm
    17  apt-cache madison kubectl
 
+#####upgrade from 1.27 to 1.28 latest version
+####3please versify the latest version from the top command put minior upgrade also
+ apt-get install kubeadm=1.28.0-1.1 kubectl=1.28.0-1.1 kubelet=1.28.0-1.1
+###to verify 
+kubeadm version
