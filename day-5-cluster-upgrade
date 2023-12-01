@@ -28,7 +28,7 @@ apt-get update
 ####to check what is the latest version of kubeadm
 kubeadm version
 kubectl version
-kubelet version
+kubelet --version
 ####to see the upgrade or the package path
  15  apt-cache madison kubelet
    16  apt-cache madison kubeadm
