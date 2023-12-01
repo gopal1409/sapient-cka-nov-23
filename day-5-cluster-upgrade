@@ -41,3 +41,5 @@ kubelet --version
 kubeadm version
 ###this will give you upgrade plan
   23  kubeadm upgrade plan
+####upgrade to the version we have update previously do not choose the 
+kubeadm upgrade apply v1.28.0
